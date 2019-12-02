@@ -8,7 +8,7 @@ import '../stylesheets/ForwardArrow.css';
 function ForwardArrow(props) {
   return (
     <div className="ForwardArrow">
-      <Link to={props.url}>
+      <Link to={props.url} className="Link">
         <FontAwesomeIcon icon={faArrowRight} size='4x'/>
       </Link>
     </div>
