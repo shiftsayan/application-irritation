@@ -1,0 +1,13 @@
+.questions {
+    padding: 3vh 0;
+    text-align: left;
+}
+
+.static {
+    position: static;
+    text-align: left;
+}
+
+label {
+    position: initial;
+}
