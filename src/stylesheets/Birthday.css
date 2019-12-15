@@ -3,6 +3,14 @@
     text-align: left;
 }
 
+.tag-container{
+    display: none;
+}
+
+.correct, .incorrect {
+    background: blue ! important;
+}
+
 .static {
     position: static;
     text-align: left;
