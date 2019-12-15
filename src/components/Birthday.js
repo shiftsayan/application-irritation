@@ -66,7 +66,7 @@ class Name extends Component {
     };
     return (<>
       <BackArrow url='/name' />
-      <ForwardArrow url='/birthday' />
+      <ForwardArrow url='/picture' />
       {/* TODO: change route url */}
       <div className='Container'>
         <div className="Title static">

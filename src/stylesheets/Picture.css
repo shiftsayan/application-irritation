@@ -1,0 +1,43 @@
+.Container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  float: left;
+  margin-left: 100pt;
+}
+
+.Title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 36pt;
+  position: absolute;
+  top: 130pt;
+}
+
+.Text {
+  font-family: 'Roboto';
+  font-size: 18pt;
+  position: absolute;
+  top: 180pt;
+  max-width: 600pt;
+  text-align: left;
+  line-height: 150%;
+  margin-bottom: 10pt;
+}
+
+.Footer {
+  font-family: 'Roboto';
+  font-size: 18pt;
+  position: absolute;
+  top: 330pt;
+  max-width: 600pt;
+  text-align: left;
+  line-height: 150%;
+  margin-bottom: 10pt;
+}
+
+.webcam {
+  position: absolute;
+  top: 220pt;
+}

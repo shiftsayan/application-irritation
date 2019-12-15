@@ -5,6 +5,7 @@ import App from './components/App';
 import Hello from './components/Hello';
 import Name from './components/Name';
 import Birthday from  './components/Birthday';
+import Picture from  './components/Picture';
 
 function Routes() {
   return (
@@ -13,6 +14,7 @@ function Routes() {
         <Route exact path='/' component={Hello} />
         <Route exact path='/name' component={Name} />
         <Route exact path='/birthday' component={Birthday} />
+        <Route exact path='/picture' component={Picture} />
       </Switch>
     </App>
   );
