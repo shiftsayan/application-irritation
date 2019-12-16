@@ -41,11 +41,15 @@ class Name extends Component {
   steps = [
     {
       selector: '.Title',
-      content: 'This title sucks!',
+      content: 'We didn\'t make clear waht the system does, and what role it plays in the website.'
     },
     {
-      selector: '.group',
-      content: 'Bar is too long!'
+      selector: '.complaintContainer',
+      content: 'Usually, you want your system to be able to support efficient dismissal (G11), but here, the suggesstion persists until you enter a valid name.',
+    },
+    {
+      selector: '#lastName',
+      content: 'A good AI system will also support efficient correction, which this interaction fails to do.'
     }
   ];
 
@@ -75,8 +79,9 @@ class Name extends Component {
         }
       }
       if (results.length !== 0) {
-        if (results[0].first === firstName) {
+        if (results.find((val) => (val.first.toLowerCase() === firstName))) {
           // Ignore valid names
+          this.setState({firstNameSuggest: ''});
         } else {
           let randResult = results[Math.floor(Math.random() * results.length)];
           // console.log(randResult);
@@ -89,9 +94,7 @@ class Name extends Component {
   }
 
   checkLast = () => {
-    console.log('hi!');
     let lastName = document.getElementById('lastName').value;
-    console.log(lastName);
     if (lastName !== '') {
       let results = fuseLast.search(lastName);
       if (results.length === 0) {
@@ -102,8 +105,9 @@ class Name extends Component {
         }
       }
       if (results.length !== 0) {
-        if (results[0].last === lastName) {
+        if (results.find((val) => (val.last.toLowerCase() === lastName))) {
           // Ignore valid names
+          this.setState({lastNameSuggest: ''});
         } else {
           let randResult = results[Math.floor(Math.random() * results.length)];
           this.setState({lastNameSuggest: randResult.last});
@@ -116,7 +120,7 @@ class Name extends Component {
 
   render () {
     return (<>
-      <BackArrow />
+      <BackArrow url='/' />
       <ForwardArrow url='/gender' />
       <div className='Container'>
         <div className="Title">
@@ -152,8 +156,7 @@ class Name extends Component {
             : <> </>
           }
         </div>
-        <button className="confirmName" onClick={this.checkBoth}>OK</button>
-        {/* <button onClick={this.startTour}>Preview Tour</button> */}
+        <a className="debreif" onClick={this.startTour}>Why is this bad?</a>
       </div>
       <Tour
         steps={this.steps}

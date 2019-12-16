@@ -42,6 +42,14 @@
   color: red;
 }
 
+.debreif {
+  position: absolute;
+  bottom: 20%;
+  color: #FF8080;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 /* Source: https://codepen.io/chrisoncode/pen/IdGKH */
 
 /* form starting stylings ------------------------------- */

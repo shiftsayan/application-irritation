@@ -33,15 +33,19 @@ class Gender extends Component {
   steps = [
     {
       selector: '.Text',
-      content: 'Why do we need a quiz to determine gender?',
+      content: 'Why do we need a quiz to determine gender? We clearly did not time services base on context (G3)!',
+    },
+    {
+      selector: '.Text img',
+      content: 'This violates a general guideline to "Make clear how well the system can do" (G2). Here, it calims a high percentage accuracy and underperforms.'
     },
     {
       selector: '.results',
-      content: 'There\'s no level of confidence in the AI!'
+      content: 'There\'s no level of confidence in the AI -- we didn\'t make clear why the system did what it did (G11). We also picked some stereotypical answers to be strong indicators, which does not migitage social biases (G6).'
     },
     {
       selector: '.retry',
-      content: 'Forces you to retake the whole quiz, no easy way to fix answers!'
+      content: 'This forces you to correct the system by retaking the quiz: violates G9, support efficient correction.'
     }
   ];
 
@@ -99,7 +103,7 @@ class Gender extends Component {
           Gender
         </div>
         <div className="Text static">
-            Take this quick quiz and we'll show our guess!
+            Take this quick quiz and we'll know your gender!
             <a data-tip data-for='info' href="/birthday"><img alt="Info bubble" style={{width: 20, paddingLeft: 10}} src={QIcon}/></a>
             <ReactTooltip place='right' id='info' type='info' effect='solid'>
                 <span>We get this right 99% of the time!</span>
@@ -128,7 +132,7 @@ class Gender extends Component {
                       <Question style={styleShow}>{this.questions[idx]}</Question>
                         {
                             ans.map((val, ansIdx) => {
-                                return <Option key={val + ansIdx} style={optionStyleShow} checked={false} value={ansIdx.toString()}>{val}</Option>
+                                return <Option key={val} style={optionStyleShow} checked={false} value={ansIdx.toString()}>{val}</Option>
                             })
                         }
                   </QuestionGroup>
@@ -137,7 +141,7 @@ class Gender extends Component {
             }
           </Test>
         </div>
-        <button onClick={this.startTour}>Preview Tour</button>
+        <a className="debreif" onClick={this.startTour}>Why is this bad?</a>
       </div>
       <Tour
         steps={this.steps}

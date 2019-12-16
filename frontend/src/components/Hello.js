@@ -6,7 +6,7 @@ import ForwardArrow from './ForwardArrow';
 function Hello() {
   return (
     <>
-      <BackArrow />
+      <BackArrow url='/' />
       <ForwardArrow url='/name' />
       <div className='Container'>
         <div className='Title'>
