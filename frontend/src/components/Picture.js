@@ -8,7 +8,11 @@ import Webcam from "react-webcam";
 
 class Picture extends Component {
   // state = {isTourOpen: false}
-  state = {screenshot: null};
+  state = {
+    screenshot: null,
+    ethnicity: null,
+    age: null
+  };
 
   // closeTour = () => {
   //   console.log('finished tour');
@@ -42,6 +46,12 @@ class Picture extends Component {
     this.setState({
       screenshot: screenshotVal
     })
+    fetch('http://0.0.0.0:5000/ai', {
+      method: "GET",
+      mode: "no-cors",
+      // body: JSON.stringify(results)
+    }).then(response => response.json());
+    // .then(json => this.setState(json));
   }
 
   render () {
@@ -66,7 +76,7 @@ class Picture extends Component {
           />
           }
           <div className="capture">
-            <button onClick={this.capture}>Capture</button>
+            <button onClick={this.capture} disabled={this.state.screenshot}>Capture</button>
           </div>
         </div>
         {/* <button onClick={this.startTour}>Preview Tour</button> */}
