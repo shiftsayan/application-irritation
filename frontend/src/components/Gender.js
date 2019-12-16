@@ -3,24 +3,25 @@ import ReactTooltip from 'react-tooltip'
 import QIcon from '../assets/q-mark.jpg';
 import { Test, QuestionGroup, Question, Option } from 'react-multiple-choice';
 
-import '../stylesheets/Birthday.css';
+import '../stylesheets/Gender.css';
 import BackArrow from './BackArrow';
 import ForwardArrow from './ForwardArrow';
 import Tour from 'reactour';
 
-class Name extends Component {
-  questions = ['What is your favorite food?',
-               'What is your favorite holiday?',
+class Gender extends Component {
+  questions = ['Which do you like the best?',
+               'Which holiday do you like the least?',
                'What is your favorite color?',
-               'This is an example last question.'];
+               'Pick a random number.'];
   possibleAnswers = [
       ['Mac & Cheese', 'Fried Chicken', 'Burgers', 'Ice Cream'],
-      ['Christmas', 'Easter', 'Thanksgiving', 'Halloween'],
+      ['Christmas', 'Valentine\'s Day', 'Thanksgiving', 'Halloween'],
       ['Blue', 'Pink', 'Green', 'Yellow'],
-      ['1', '2', '3', '4', '5', '6']
+      ['10', '4', '122', '318']
   ];
 
   state = {isTourOpen: false,
+           isQuizDone: false,
            selectedOptions: {},
            currQ: 'What is your favorite food?',
            qNum: 0};
@@ -31,12 +32,16 @@ class Name extends Component {
 
   steps = [
     {
-      selector: '.Title',
-      content: 'This title sucks!',
+      selector: '.Text',
+      content: 'Why do we need a quiz to determine gender?',
     },
     {
-      selector: '.group',
-      content: 'Bar is too long!'
+      selector: '.results',
+      content: 'There\'s no level of confidence in the AI!'
+    },
+    {
+      selector: '.retry',
+      content: 'Forces you to retake the whole quiz, no easy way to fix answers!'
     }
   ];
 
@@ -48,15 +53,37 @@ class Name extends Component {
     this.setState({isTourOpen: false});
   }
 
+  decisionTree = (selectedOptions) => {
+    let total = [0, 0, 0, 0]
+    for (let q in selectedOptions) {
+        total[selectedOptions[q]] += 1
+    }
+    if (total.indexOf(4) > -1 || total.indexOf(3) > -1 || (total[1] + total[2] > 2)) {
+      return 'Male';
+    } else {
+      return 'Female';
+    }
+  }
+
   moveOn = (selectedOptions) => {
     if (this.state.qNum === this.questions.length - 1) {
-      console.log('finished!');
-      console.log(selectedOptions);
-      // TODO: add call to API
+      this.setState({
+          guess: this.decisionTree(selectedOptions),
+          isQuizDone: true});
+      console.log(this.state.guess)
     }
     this.setState({ selectedOptions,
                     qNum: (this.state.qNum + 1),
                     currQ: this.questions[this.state.qNum + 1]});
+  }
+
+  resetQuiz = () => {
+    this.setState({
+      qNum: 0,
+      isQuizDone: false,
+      selectedOptions: {},
+      currQ: this.questions[0]
+    })
   }
 
   render () {
@@ -67,18 +94,27 @@ class Name extends Component {
     return (<>
       <BackArrow url='/name' />
       <ForwardArrow url='/picture' />
-      {/* TODO: change route url */}
       <div className='Container'>
         <div className="Title static">
-          Date of Birth
+          Gender
         </div>
         <div className="Text static">
-            Take this quick quiz and we'll show our top 3 guesses!
+            Take this quick quiz and we'll show our guess!
             <a data-tip data-for='info' href="/birthday"><img alt="Info bubble" style={{width: 20, paddingLeft: 10}} src={QIcon}/></a>
             <ReactTooltip place='right' id='info' type='info' effect='solid'>
                 <span>We get this right 99% of the time!</span>
             </ReactTooltip>
         </div>
+        {
+          (this.state.isQuizDone) ?
+          <>
+            <div className="results">
+                You are a {this.state.guess}!
+            </div>
+            <button onClick={this.resetQuiz} className="retry">Try Again?</button>
+          </>
+          : null
+        }
         <div className="questions">
           <Test style={testStyle} onOptionSelect={selectedOptions => this.moveOn(selectedOptions)}>
             {
@@ -112,4 +148,4 @@ class Name extends Component {
   }
 }
 
-export default Name;
+export default Gender;

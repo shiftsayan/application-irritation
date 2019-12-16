@@ -33,7 +33,7 @@ class Name extends Component {
   render () {
     return (<>
       <BackArrow />
-      <ForwardArrow url='/birthday' />
+      <ForwardArrow url='/gender' />
       <div className='Container'>
         <div className="Title">
           Name

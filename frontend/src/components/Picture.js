@@ -3,7 +3,7 @@ import '../stylesheets/Picture.css';
 import BackArrow from './BackArrow';
 import ForwardArrow from './ForwardArrow';
 import Webcam from "react-webcam";
- 
+
 // import Tour from 'reactour';
 
 class Picture extends Component {
@@ -57,7 +57,7 @@ class Picture extends Component {
 
   render () {
     return (<>
-      <BackArrow />
+      <BackArrow url='/gender' />
       <ForwardArrow url='/picture' />
       <div className='Container'>
         <div className="Title">
@@ -67,13 +67,13 @@ class Picture extends Component {
           Add a picture to your profile!
         </div>
         <div className="webcam">
-          { this.state.screenshot ? 
+          { this.state.screenshot ?
           <img src={`${this.state.screenshot}`}/>
           :
-          <Webcam 
+          <Webcam
           screenshotFormat="image/jpeg"
             ref={this.setRef}
-            height={360}  
+            height={360}
           />
           }
           <div className="capture">
