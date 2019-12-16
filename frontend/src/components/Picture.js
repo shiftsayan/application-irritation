@@ -47,11 +47,12 @@ class Picture extends Component {
       screenshot: screenshotVal
     })
     fetch('http://0.0.0.0:5000/ai', {
-      method: "GET",
-      mode: "no-cors",
-      // body: JSON.stringify(results)
-    }).then(response => response.json());
-    // .then(json => this.setState(json));
+      method: "POST",
+      mode: "cors",
+      body: JSON.stringify(screenshotVal)
+    })
+    .then(response => response.json())
+    .then(json => this.setState(json));
   }
 
   render () {
@@ -78,6 +79,18 @@ class Picture extends Component {
           <div className="capture">
             <button onClick={this.capture} disabled={this.state.screenshot}>Capture</button>
           </div>
+          <div className="sidebar">
+          {  this.state.ethnicity &&
+            <div className="ethnicity">
+              <div className="desc">Your ethnicity is:</div>
+              <div className="label">{this.state.ethnicity}</div>
+            </div> }
+            { this.state.age &&
+            <div className="age">
+              <div className="desc">Your age is:</div>
+              <div className="label">{this.state.age}</div>
+            </div> }
+            </div>
         </div>
         {/* <button onClick={this.startTour}>Preview Tour</button> */}
       </div>

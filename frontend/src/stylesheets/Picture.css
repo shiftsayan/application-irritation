@@ -41,3 +41,21 @@
   position: absolute;
   top: 220pt;
 }
+
+.sidebar {
+  position: absolute;
+  left: 380pt;
+  width: fit-content;
+  top: 0pt;
+  text-align: left;
+}
+
+.desc {
+  font-size: larger;
+}
+
+.label {
+  margin-bottom: 10pt;
+  text-transform: uppercase;
+  font-weight: 500;
+}
