@@ -12,9 +12,9 @@ class Res(Resource):
 
     def post(self):
         image = request.get_data()
-        age = getAge(image)
+        age, nat = getAge(image)
         response = jsonify(
-            ethnicity='white',
+            ethnicity=nat,
             age=age
         )
         response.headers['Access-Control-Allow-Origin'] = '*'
@@ -23,5 +23,3 @@ class Res(Resource):
 
 api.add_resource(Res, "/ai")
 app.run(host='0.0.0.0', debug=True) # runs on port 5000 by default
-
-
