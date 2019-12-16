@@ -1,0 +1,38 @@
+.questions {
+    padding: 3vh 0;
+    text-align: left;
+}
+
+.tag-container{
+    display: none;
+}
+
+.correct, .incorrect {
+    background: blue ! important;
+}
+
+.static {
+    position: static !important;
+    text-align: left !important;
+    top: initial;
+}
+
+.results {
+    text-align: left;
+    padding: 10px 0;
+}
+
+.retry {
+    padding: 10px;
+    width: 50%;
+    margin: 10px 0;
+    font-family: 'Roboto';
+    background-color: #AAAAAA;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+label {
+    position: initial;
+}
