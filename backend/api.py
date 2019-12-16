@@ -3,6 +3,8 @@ from flask_restful import Api, Resource, reqparse
 
 import json
 
+from gad import getAge
+
 app = Flask(__name__)
 api = Api(app)
 
@@ -10,9 +12,10 @@ class Res(Resource):
 
     def post(self):
         image = request.get_data()
+        age, nat = getAge(image)
         response = jsonify(
-            ethnicity='white',
-            age=21
+            ethnicity=nat,
+            age=age
         )
         response.headers['Access-Control-Allow-Origin'] = '*'
         response.headers['Access-Control-Allow-Credentials'] = True
