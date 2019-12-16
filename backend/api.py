@@ -9,7 +9,7 @@ api = Api(app)
 class Res(Resource):
 
     def get(self):
-        return "hi" 
+        return "hi"
         # {
         #     'ethnicity': 'white',
         #     'age': 21
