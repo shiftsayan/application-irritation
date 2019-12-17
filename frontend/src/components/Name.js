@@ -41,7 +41,7 @@ class Name extends Component {
   steps = [
     {
       selector: '.Title',
-      content: 'We didn\'t make clear waht the system does, and what role it plays in the website.'
+      content: 'We didn\'t make clear what the system does, and what role it plays in the website.'
     },
     {
       selector: '.complaintContainer',
@@ -50,6 +50,10 @@ class Name extends Component {
     {
       selector: '#lastName',
       content: 'A good AI system will also support efficient correction, which this interaction fails to do.'
+    },
+    {
+      selector: '.select',
+      content: 'The back button is disabled, which is bad functionality and reduces the user\'s control over the system.'
     }
   ];
 
@@ -120,7 +124,7 @@ class Name extends Component {
 
   render () {
     return (<>
-      <BackArrow url='/' />
+      <BackArrow className=".select" />
       <ForwardArrow url='/gender' />
       <div className='Container'>
         <div className="Title">

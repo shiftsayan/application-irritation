@@ -37,7 +37,7 @@ class Gender extends Component {
     },
     {
       selector: '.Text img',
-      content: 'This violates a general guideline to "Make clear how well the system can do" (G2). Here, it calims a high percentage accuracy and underperforms.'
+      content: 'This violates a general guideline to "Make clear how well the system can do" (G2). Here, it claims a high percentage accuracy and underperforms.'
     },
     {
       selector: '.results',
@@ -96,7 +96,7 @@ class Gender extends Component {
       textAlign: 'left'
     };
     return (<>
-      <BackArrow url='/name' />
+      <BackArrow />
       <ForwardArrow url='/picture' />
       <div className='Container'>
         <div className="Title static">
