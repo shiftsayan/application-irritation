@@ -23,3 +23,9 @@ frontend/yarn-debug.log*
 frontend/yarn-error.log*
 
 node_modules/
+
+# Local development artifacts
+.idea/
+.vscode/
+__pycache__/
+*.py[cod]
